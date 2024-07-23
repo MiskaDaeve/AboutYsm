@@ -32,3 +32,28 @@
 <img src=/resources/ysm_modern_decompile_6.png>
 <img src=/resources/ysm_modern_decompile_7.png>
 可以看出,他的native不只是生成数据的活,他甚至把整个处理缓存数据包数据的都写进了native,当然更逆天的还远不仅此
+
+## 通信协议(Layer)
+PS:由于ysm的混淆,这里新版本的数据包信息可能并不是很全
+Ysm的通信使用的是modloaderAPI自带的networking,即ysm的通信走的mc的custompayload数据包
+
+### 旧版本
+PS:旧版本更加详细的结构可以参考我的reobf了一半的旧版本[传送门](https://github.com/MiskaDaeve/YsmDeobfNonCompleted/blob/main/ysm_1.1.5-hotfix-2-deobf-classes.jar)
+#### Forge
+ Channel Name: yes_steve_model:network </br>
+ Data: 
+      Idx: 0 Type: Byte Desc: PacketId</br>
+      Idx: 1 Type: Bytes Desc: Packet Body(在数据包类中可以看到每个数据包的具体结构)
+#### Fabric
+ Channel Names: yes_steve_model:[packetId] </br>
+ Data: Packet Body(在数据包类中可以看到每个数据包的具体结构)
+
+### 新版本
+新版本的ysm做了跨modloader上ysm的协议兼容,所以fabric和forge版本的数据包框架结构变为了一个,当然他们也打乱了数据包id</br>
+PS:在Velocity兼容性修复前,他们的channelName的path一直使用的协议版本号(1.2.1),这也是为何那些版本不兼容Velocity的原因(Velocity不允许.这些字符出现在channelName中,在实际开发中也不应当出现),
+在新版本中，他们仅仅只是简单地将旧的channelName来了个replace(".","_").(<del>我感觉真的很无语,毕竟都用数据包检测版本了就不能不用版本号档channelName吗</del>)</br>
+ Channel Name: yes_steve_model:1.2.1(Before Velocity compatibility fixes)</br>
+ Data:
+      Idx: 0 Type: Byte Desc: PacketId</br>
+      Idx: 1 Type: Bytes Desc: Packet Body(在数据包类中可以看到每个数据包的具体结构)</br>
+PS:他们似乎为了实现跨modloader兼容性,将forge的network的一部分给硬塞进了fabric(<del>迷惑操作+1</del>)

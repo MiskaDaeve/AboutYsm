@@ -121,3 +121,10 @@ PS: 数据包是否拆分仍旧不详, 缓存文件格式仍旧不详, 同时, �
 同时,在ysm的NetworkRegistry中也可能存在问题,它的奇怪的CAS操作很有可能会导致跨服问题,因为在跨服端中,客户端的Channel并不会因为跨服而重新创建因为客户端到跨服端的连接是不会断开的,这也就导致已经握手过的客户端的channelVer的预期值永远不会是null
 <img src=/resources/ysm_weird_cas_operation.png>
 最后,ysm1.2.0以及后面的一些版本并不直接采用的channel attr进行标记,在forge上他们依赖了forgehandshake,这也就导致那个时期的ysm不兼容跨modloader
+
+## 杂项
+![图片](https://github.com/user-attachments/assets/153d9b33-82e7-4b75-b54f-a1e1ede59e4d)
+
+![图片](https://github.com/user-attachments/assets/d035cd68-819b-4a40-9f6c-6f8532d2dc1e)
+
+https://web.archive.org/web/20240730025323/https://github.com/TartaricAcid/ysm/issues/79

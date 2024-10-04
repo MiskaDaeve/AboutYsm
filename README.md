@@ -128,3 +128,5 @@ PS: 数据包是否拆分仍旧不详, 缓存文件格式仍旧不详, 同时, �
 ![图片](https://github.com/user-attachments/assets/d035cd68-819b-4a40-9f6c-6f8532d2dc1e)
 
 https://web.archive.org/web/20240730025323/https://github.com/TartaricAcid/ysm/issues/79
+
+![图片](https://github.com/user-attachments/assets/183637c1-ded1-4e88-b7fb-e5f6e007efc4)
